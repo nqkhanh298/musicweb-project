@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block style %} 
+<link rel="stylesheet" href="../static/css/running.css">
+<link rel="stylesheet" href="../static/css/charts.css">
+{% endblock %}
+{% block title %}
+    Running
+{% endblock %}
+{% block body %}
+        
+        <div class="rn">
+            <div class="cover"  >
+                <iframe class="c"
+                    src="https://www.nhaccuatui.com/mh/auto/{{idSong}}"
+                    width="620"
+                    height="620"
+                    frameborder="0"
+                    allowfullscreen
+                    allow = 'autoplay'
+                    >
+                </iframe>
+            </div>
+            <div class="recommend">
+                <p class="rcm">Recommend List</p>
+                <!--<img src="../static/img/playbutton.png" alt="" class="pb">-->
+                <hr>
+                {% for recommend_info in recommendList %}
+                <a href="/play/{{recommend_info.id}}" style="text-decoration:none;"><div class="b2">
+                       <img src="{{recommend_info.avatar}}" alt="" class="ava2">
+                        <div class=name2>
+                            <p><b>{{recommend_info.title}}</b><br>{{recommend_info.singers|join(', ')}}</p>
+                        </div>
+                    </div></a>
+                    <hr>
+                {% endfor %}
+                
+            </div>
+            
+        </div>
+    
+{% endblock %}
